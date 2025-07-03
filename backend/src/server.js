@@ -1,8 +1,10 @@
  import express from "express";
+ import dotenv from "dotenv";
+ import cors from "cors";
+
  import notesRoutes from "./routes/notesRoutes.js";
  import {connectDB} from "./config/db.js";
- import dotenv from "dotenv";
-import rateLimiter from "./middleware/rateLimiter.js";
+ import rateLimiter from "./middleware/rateLimiter.js";
 
  dotenv.config();
 
@@ -11,9 +13,14 @@ import rateLimiter from "./middleware/rateLimiter.js";
 
 
  //middleware
+ app.use(cors(
+ {
+   origin: "http://localhost:5173",
+ }
+ ));
  app.use(express.json());  // helps parse JSON bodoes : req.body
-
  app.use(rateLimiter);
+
 
 //  simple custom middleware to log request method and URL
 //   app.use((req,res,next) => {

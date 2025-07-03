@@ -11,6 +11,6 @@ export default {
   },
   plugins: [daisyui],
   daisyui:{
-    themes: ["dim","cyberpunk","business"],
+    themes: ["dim","cyberpunk","business","sunset"],
   },
 };
